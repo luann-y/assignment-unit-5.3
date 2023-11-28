@@ -3,7 +3,7 @@ console.log('***** Music Collection *****')
 
 let myCollection = [];
 
-function addToCollection(collection, title, artist, yearPublished) {
+function addToCollection(collection, title, artist, yearPublished) { //collection is where album pushed
     let newAlbum = {
         title: title,
         artist: artist,
@@ -13,14 +13,14 @@ function addToCollection(collection, title, artist, yearPublished) {
     return newAlbum;
 }
 
-let absolution = addToCollection(myCollection, 'Muse', 'Absolution', 2003);
-let blackHolesAndRevelations = addToCollection(myCollection, 'Muse', 'Black Holes & Revelations', 2006);
-let souvlaki = addToCollection(myCollection, 'Slowdive', 'Souvlaki', 1994);
-let saturdaysYouth = addToCollection(myCollection, 'M83', 'Saturdays = Youth', 2008);
-let afterTheWar = addToCollection(myCollection, 'Stars', 'In Our Bedroom After The War', 2007);
-let nighttiming = addToCollection(myCollection, 'Coconut Records', 'Nighttiming', 2007);
-let strangestThings = addToCollection(myCollection, 'Longwave', 'Strangest Things', 2003);
-let theBends = addToCollection(myCollection, 'Radiohead', 'The Bends', 1995);
+let absolution = addToCollection(myCollection, 'Absolution', 'Muse', 2003);
+let blackHolesAndRevelations = addToCollection(myCollection, 'Black Holes & Revelations', 'Muse', 2006);
+let souvlaki = addToCollection(myCollection, 'Souvlaki', 'Slowdive', 1994);
+let saturdaysYouth = addToCollection(myCollection, 'Saturdays = Youth', 'M83', 2008);
+let afterTheWar = addToCollection(myCollection, 'In Our Bedroom After The War', 'Stars', 2007);
+let nighttiming = addToCollection(myCollection, 'Nighttiming', 'Coconut Records', 2007);
+let strangestThings = addToCollection(myCollection, 'Strangest Things', 'Longwave', 2003);
+let theBends = addToCollection(myCollection, 'The Bends', 'Radiohead', 1995);
 
 
 console.log(absolution);
@@ -31,6 +31,31 @@ console.log(nighttiming);
 console.log(strangestThings);
 console.log(theBends);
 console.log(myCollection);
+
+
+function showCollection(collection) {
+  for (let album of collection) {
+    console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}.`);
+  }
+}
+
+showCollection(myCollection);
+
+
+
+function findByArtist(collection, artist) {
+  let matchingResults = [];
+  for (let album of collection) {
+    if (album.artist === artist) {
+      matchingResults.push(album);
+    }
+  }
+  return matchingResults;
+}
+
+console.log(`'Find 'Muse'`);
+let museAlbums = findByArtist(myCollection, 'Muse');
+showCollection(museAlbums);
 
 
 
